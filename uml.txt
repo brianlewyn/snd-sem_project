@@ -1,0 +1,24 @@
+03/04/23
+
+Yael:
+Stock:
+- chore(Stock.sortByAlphabet): from String to Object[]
+- chore(Stock.sortByDate): from String to Object[]
+    
+Dylan:
+
+-Actualizacion en el constructor de la clase Client parametros(n,ref)
+-Actualizacion en los atributos de la clase Client
+-Actualizacion de los metodos getDate y setDate para la clase Client
+
+Brayan:
+Modifier:
+- chore(sortByAlphabet): from String to Object[]
+- chore(sortByDate): from String to Object[]
+Provider:
+- feat(data): add new tribute with getters and setters
+- feat(Product r): add new paramter as a reference
+ProverderSet:
+- chore(sortByAlphabet): from String to Object[]
+- chore(sortByDate): from String to Object[]
+- chore(setProductReference): from productReference to reference
