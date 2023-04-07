@@ -2,9 +2,7 @@ public class ClientSet implements Modifier{
     private Client[] clientArray = new Client[10];
     private int nClient = 0;
 
-    public ClientSet(){
-
-    }
+    public ClientSet(){}
 
     public boolean add(Client c){
         if(nClient<clientArray.length){
@@ -60,8 +58,6 @@ public class ClientSet implements Modifier{
         
         return temp;
     }
-
-    
     
     public Object[] sortByAlphabet(){
         Client temp;
@@ -99,5 +95,4 @@ public class ClientSet implements Modifier{
 	public int length(){
 		return nClient;
 	}
-
 }

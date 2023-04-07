@@ -6,11 +6,6 @@ public class Stock implements Modifier, ProductSet{
     private ProviderSet providersReference;
     private ClientSet clientsReference;
 
-    /**
-     * Stock return a intance
-     * @param p  a ProviderSet
-     * @param c  a ClientSet
-     */
     public Stock(ProviderSet p, ClientSet c){
         providersReference = p;
         clientsReference = c;
@@ -116,10 +111,22 @@ public class Stock implements Modifier, ProductSet{
     }
 
     public String relateClientToProduct(int ic, int ip, LocalDate date){
-        return "";
+        Client client = clientsReference.modify(ic);
+
+        if (client.getDate() == date){
+            client.addProductReference(productArray[ip]);
+        } else {
+            client.setDate(date);
+            client.emptyProductArrayReference();
+            client.addProductReference(productArray[ip]);
+        }
+ 
+        return client.toStringProductArray();
     }
 
-    public String relateProviderToProduct(int ic, int ip, LocalDate date){
-        return "";
-    }    
+    public String relateProviderToProduct(int ipv, int ip, LocalDate date){
+        Provider provider = providersReference.modify(ipv);
+        provider.addProductReference(productArray[ip]);
+        return provider.toStringProductArray();
+    }
 }

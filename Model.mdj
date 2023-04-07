@@ -1048,6 +1048,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGHXM4MuEJs40M=",
+											"_parent": {
+												"$ref": "AAAAAAGHJCaWxg9SMnA="
+											},
+											"model": {
+												"$ref": "AAAAAAGHXM4MhUJpOTI="
+											},
+											"font": "Arial;13;0",
+											"left": 725,
+											"top": 907,
+											"width": 279,
+											"height": 13,
+											"text": "+Attribute1",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAGHMPzCgKVdqd8=",
 											"_parent": {
 												"$ref": "AAAAAAGHJCaWxg9SMnA="
@@ -1057,7 +1074,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 907,
+											"top": 922,
 											"width": 279,
 											"height": 13,
 											"text": "-productReference: Product",
@@ -1068,7 +1085,7 @@
 									"left": 720,
 									"top": 857,
 									"width": 289,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1091,7 +1108,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 930,
+											"top": 945,
 											"width": 279,
 											"height": 13,
 											"text": "+Provider(n: String, p: String, e: String)",
@@ -1108,7 +1125,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 945,
+											"top": 960,
 											"width": 279,
 											"height": 13,
 											"text": "+getName(): String",
@@ -1125,7 +1142,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 960,
+											"top": 975,
 											"width": 279,
 											"height": 13,
 											"text": "+getPhone(): String",
@@ -1142,7 +1159,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 975,
+											"top": 990,
 											"width": 279,
 											"height": 13,
 											"text": "+getEmail(): String",
@@ -1159,7 +1176,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 990,
+											"top": 1005,
 											"width": 279,
 											"height": 13,
 											"text": "+setName(name: String): void",
@@ -1176,7 +1193,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 1005,
+											"top": 1020,
 											"width": 279,
 											"height": 13,
 											"text": "+setPhone(phone: String): void",
@@ -1193,7 +1210,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 1020,
+											"top": 1035,
 											"width": 279,
 											"height": 13,
 											"text": "+setEmail(email: String): void",
@@ -1210,7 +1227,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 1035,
+											"top": 1050,
 											"width": 279,
 											"height": 13,
 											"text": "+getProductReference(): Product",
@@ -1227,7 +1244,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 1050,
+											"top": 1065,
 											"width": 279,
 											"height": 13,
 											"text": "+setProductReference(reference: Product): void",
@@ -1244,7 +1261,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 725,
-											"top": 1065,
+											"top": 1080,
 											"width": 279,
 											"height": 13,
 											"text": "+toString(): String",
@@ -1253,7 +1270,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 720,
-									"top": 925,
+									"top": 940,
 									"width": 289,
 									"height": 158
 								},
@@ -1298,7 +1315,7 @@
 							"left": 720,
 							"top": 832,
 							"width": 289,
-							"height": 251,
+							"height": 266,
 							"nameCompartment": {
 								"$ref": "AAAAAAGHJCaWxQ9Ns3o="
 							},
@@ -7132,7 +7149,7 @@
 											"top": 589,
 											"width": 201.95068359375,
 											"height": 13,
-											"text": "-sotck: Stock",
+											"text": "-stock: Stock",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9157,6 +9174,15 @@
 									"name": "email",
 									"visibility": "private",
 									"type": "String"
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAGHXM4MhUJpOTI=",
+									"_parent": {
+										"$ref": "AAAAAAGHJCaWxA9KCrQ="
+									},
+									"name": "Attribute1",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12355,7 +12381,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGHOLpTEqawQ8g="
 									},
-									"name": "sotck",
+									"name": "stock",
 									"visibility": "private",
 									"type": {
 										"$ref": "AAAAAAGHJE3D2BC0fok="

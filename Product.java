@@ -8,7 +8,8 @@ public class Product {
    protected String description;
    protected LocalDate date;
    protected Provider providerReference;
-
+   protected boolean isSold;
+   
    public Product(String n, long c, float p, float di,String de, LocalDate da, Provider r){
       name = n;
       code = c;
@@ -46,6 +47,10 @@ public class Product {
    public Provider getProviderReference(){
       return providerReference;
    }
+
+   public boolean isSold(){
+      return isSold;
+   }
    
    public void setName(String name){
       this.name = name;
@@ -73,5 +78,15 @@ public class Product {
 
    public void setProviderReference(Provider reference){
       providerReference = reference;
+   }
+
+   public boolean setIsSold(boolean sold){
+      return isSold;
+   }
+
+   public String toStringProduct(){
+      return "Product ["+name+"]:\nCode: "+code+
+      "\nPrice: "+price+"\nDiscount: "+discount+
+      "\nDescription: "+description+"\nDate: "+date;
    }
 }
