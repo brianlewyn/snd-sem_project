@@ -1,50 +1,29 @@
 import java.time.LocalDate;
 
-public class Provider{
-	protected String name;
+public class Provider extends Person{
 	protected String phone;
-	protected String email;
 	protected LocalDate date;
 	private int nProductReference;
 	private Product[] productArrayReference = new Product[10];
 
-	public Provider(String n, String p, String e, LocalDate d){
-		name = n;
+	public Provider(String n, String e, String p, LocalDate d){
+		super(n, e);
 		phone = p;
-		email = e;
 		date = d;
 	}
 
 	//Getters
-	public String getName(){
-		return name;
-	}
-
 	public String getPhone(){
 		return phone;
 	}
-
-	public String getEmail(){
-		return email;
-	}
-
 	public LocalDate getDate(){
 		return date;
 	}
     
 	//Setters
-	public void setName(String name){
-		this.name = name;
-	}
-
 	public void setPhone(String phone){
 		this.phone = phone;
 	}
-
-	public void setEmail(String email){
-		this.email = email;
-	}
-
 	public void setDate(LocalDate date){
 		this.date = date;
 	}

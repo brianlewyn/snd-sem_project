@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.model.Client; 
 
 public class Stock implements Modifier, ProductSet{
     private Product[] productArray = new Product[10];

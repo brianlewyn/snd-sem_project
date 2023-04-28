@@ -3,9 +3,13 @@ import java.time.LocalDate;
 public class ElectronicProduct extends Product{
     private long serial = 0;
 
-    public ElectronicProduct(String n, long c, float p, float di, String de, LocalDate da, Provider r,  long s){
-        super(n, c, p, di, de, da, r);
-        serial = s;
+    public ElectronicProduct(String n, int st, long c, float p, float di, String de, LocalDate da, Provider r,  long se){
+        super(n, st, c, p, di, de, da, r);
+        serial = se;
+    }
+
+    public Product getCopy(){
+        return new ElectronicProduct(name,1,code,price,discount,description,date,providerReference, serial);
     }
 
     public long getSerial(){

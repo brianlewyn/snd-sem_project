@@ -1,17 +1,18 @@
 import java.time.LocalDate;
 
-public class Product {
+public abstract class Product {
    protected String name;
+   protected int stock;
    protected long code;
    protected float price;
-   protected float discount;
+   protected float discount; // 0.16 == 16%
    protected String description;
    protected LocalDate date;
    protected Provider providerReference;
-   protected boolean isSold;
    
-   public Product(String n, long c, float p, float di,String de, LocalDate da, Provider r){
+   public Product(String n, int st, long c, float p, float di,String de, LocalDate da, Provider r){
       name = n;
+      stock = st;
       code = c;
       price = p;
       discount = di;
@@ -20,8 +21,29 @@ public class Product {
       providerReference = r;
    }
 
+   public abstract Product getCopy();
+
    public String getName(){
       return name;
+   }
+
+   public int getNumStock(){
+      return stock;
+   }
+
+   public void addStock(){
+      stock++;
+   }
+
+   public void removeStock(){
+      stock--;
+   }
+
+   public boolean isMinimumStock(){
+      if (stock<5){
+         return true;
+      }
+      return false;
    }
    
    public long getCode(){
@@ -47,15 +69,11 @@ public class Product {
    public Provider getProviderReference(){
       return providerReference;
    }
-
-   public boolean isSold(){
-      return isSold;
-   }
    
    public void setName(String name){
       this.name = name;
    }
-
+   
    public void setCode(long code){
       this.code = code;
    }
@@ -80,11 +98,7 @@ public class Product {
       providerReference = reference;
    }
 
-   public boolean setIsSold(boolean sold){
-      return isSold;
-   }
-
-   public String toStringProduct(){
+   public String toString(){
       return "Product ["+name+"]:\nCode: "+code+
       "\nPrice: "+price+"\nDiscount: "+discount+
       "\nDescription: "+description+"\nDate: "+date;
