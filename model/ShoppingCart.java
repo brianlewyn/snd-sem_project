@@ -1,6 +1,6 @@
 public class ShoppingCart{
+	private Product[] productArray = new Product[10];
    private int nProduct = 0;
-   private Product[] productArray = new Product[10];
 
    public ShoppingCart(){}
 
@@ -66,16 +66,11 @@ public class ShoppingCart{
 		return false;
     }
 
-    public boolean purchaseList(boolean b){
-		if (b) {
-			for (int i=0; i<nProduct; i++) {
-				productArray[i].removeStock();
-			}
-
-			return true;
+    public void flush(){
+		for (int i=0; i<nProduct; i++) {
+			productArray[i].removeStock();
 		}
-
-		return true; 
+		nProduct = 0;
     }
 
 	public String toString(){

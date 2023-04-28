@@ -10,13 +10,16 @@ public class Store{
     public String getName(){
         return name;
     }
+    
     public String getAddress(){
         return address;
     }
-    public void setName(String n){
-        this.name=n;
+    
+    public void setName(String name){
+        this.name=name;
     }
-    public void setAddress(String a){
-        this.address=a;
+    
+    public void setAddress(String address){
+        this.address=address;
     }
 }

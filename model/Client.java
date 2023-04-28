@@ -3,17 +3,16 @@ import java.time.LocalDate;
 public class Client extends Person{ 
    private String address; 
    private String rfc;
-   private LocalDate date;
    private ShoppingCart shoppingCart;
 
-   public Client(String n, String e, String a, String r){
-      super(n, e);
-      address=a;
-      rfc=r;
+   public Client(String n, String e, String a, String r, LocalDate da){
+      super(n, e, da);
+      address = a;
+      rfc = r;
+      date = da;
       shoppingCart = new ShoppingCart();
    }
 
-   // getters
    public String getAddress(){
       return address;
    }
@@ -21,26 +20,17 @@ public class Client extends Person{
    public String getRfc(){
       return rfc;
    }
-   
-   public LocalDate getDate(){
-      return date;
-   }
 
    public ShoppingCart getShoppingCart(){
       return shoppingCart;
    }
    
-   // setters
    public void setAddress(String a){
       this.address=a;
    }  
    
    public void setRfc(String r){
       this.rfc=r;
-   }
-   
-   public void setDate(LocalDate date){
-      this.date = date;
    }
 
    public String toString(){

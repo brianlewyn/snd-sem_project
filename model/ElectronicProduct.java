@@ -8,7 +8,7 @@ public class ElectronicProduct extends Product{
         serial = se;
     }
 
-    public Product getCopy(){
+    public ElectronicProduct getCopy(){
         return new ElectronicProduct(name,1,code,price,discount,description,date,providerReference, serial);
     }
 

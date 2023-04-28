@@ -21,8 +21,6 @@ public abstract class Product {
       providerReference = r;
    }
 
-   public abstract Product getCopy();
-
    public String getName(){
       return name;
    }
@@ -103,4 +101,6 @@ public abstract class Product {
       "\nPrice: "+price+"\nDiscount: "+discount+
       "\nDescription: "+description+"\nDate: "+date;
    }
+
+   public abstract Product getCopy();
 }

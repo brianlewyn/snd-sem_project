@@ -2,75 +2,65 @@ import java.time.LocalDate;
 
 public class Provider extends Person{
 	protected String phone;
-	protected LocalDate date;
-	private int nProductReference;
-	private Product[] productArrayReference = new Product[10];
+	private Product[] productArray = new Product[10];
+	private int nProduct = 0;
 
-	public Provider(String n, String e, String p, LocalDate d){
-		super(n, e);
+	public Provider(String n, String e, String p, LocalDate da){
+		super(n, e, da);
 		phone = p;
-		date = d;
 	}
 
-	//Getters
 	public String getPhone(){
 		return phone;
 	}
-	public LocalDate getDate(){
-		return date;
-	}
-    
-	//Setters
+
 	public void setPhone(String phone){
 		this.phone = phone;
 	}
-	public void setDate(LocalDate date){
-		this.date = date;
-	}
 	
-	public boolean addProductReference(Product reference){
-      if (nProductReference < productArrayReference.length){
-         productArrayReference[nProductReference] = reference;
-         nProductReference++;
+	public boolean addProduct(Product reference){
+      if (nProduct < productArray.length){
+         productArray[nProduct] = reference;
+         nProduct++;
          return true;
       }
       return false;
    }
 
-   public Product getProductReference(int i){
-      if (0<=i && i < nProductReference){
-         return productArrayReference[i];
+   public Product getProduct(int i){
+      if (0<=i && i < nProduct){
+         return productArray[i];
       }
       return null;
    }
 
-   public boolean removeProductReference(int i){
-      if (i<0 || nProductReference<=i){
+   public boolean removeProduct(int i){
+      if (i<0 || nProduct<=i){
          return false;
       }
       
-      for (int j=i; j<productArrayReference.length-1; j++){
-         productArrayReference[j] = productArrayReference[j+1];
+      for (int j=i; j<productArray.length-1; j++){
+         productArray[j] = productArray[j+1];
       }
       
-      productArrayReference[nProductReference-1] = null;
-      nProductReference--;
+      productArray[nProduct-1] = null;
+      nProduct--;
       return true;
    }
 
-   public int getNumProductReference(){
-      return nProductReference;
+   public int getNumProduct(){
+      return nProduct;
    }
 
 	public String toStringProductArray(){
       String temp =  "Provier ["+name+"]:";
 
-      if (nProductReference == 0){
+      if (nProduct == 0){
          return temp+"\n\tNo products yet";
       }
 
-      for (int i=0; i<nProductReference; i++){
-         temp = "\n"+i+1+".-"+productArrayReference[i].getName();
+      for (int i=0; i<nProduct; i++){
+         temp = "\n"+i+1+".-"+productArray[i].getName();
       }
       
       return temp;

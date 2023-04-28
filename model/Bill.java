@@ -30,7 +30,7 @@ public class Bill{
 		return total;
 	}
 
-	public String createBill(int indexClient){
+	public String createBill(){
 		String t = "Bill";
 		ShoppingCart cart = client.getShoppingCart();
 		
@@ -82,6 +82,8 @@ public class Bill{
 
 			t+="\n\n\t\t\t¡Gracias por su compra! tenga buen día <3";
 		}
+
+		cart.flush();
 		return t;
 	}
 }
