@@ -1,16 +1,11 @@
-import java.time.LocalDate;
-
 public class Client extends Person{ 
    private String address; 
    private String rfc;
-   private ShoppingCart shoppingCart;
 
-   public Client(String n, String e, String a, String r, LocalDate da){
-      super(n, e, da);
+   public Client(String n, String e, String a, String r){
+      super(n, e);
       address = a;
       rfc = r;
-      date = da;
-      shoppingCart = new ShoppingCart();
    }
 
    public String getAddress(){
@@ -20,20 +15,22 @@ public class Client extends Person{
    public String getRfc(){
       return rfc;
    }
-
-   public ShoppingCart getShoppingCart(){
-      return shoppingCart;
-   }
    
-   public void setAddress(String a){
-      this.address=a;
+   public void setAddress(String address){
+      this.address = address;
    }  
    
-   public void setRfc(String r){
-      this.rfc=r;
+   public void setRfc(String rfc){
+      this.rfc = rfc;
    }
 
    public String toString(){
-      return "Client["+name+"]:\nAddress: "+address+"\nRFC: "+rfc+"\nEmail: "+email;
+      return "CLIENT"+super.toString()+"\nAddress: "+address+"\nRFC: "+rfc;
    }
+
+   // CLIENT: 
+   // Name: Yael Salazar 
+   // Email: random@gmail.com
+   // Address: random. av. randow
+   // RFC: 12DFGH6789JKL
 }

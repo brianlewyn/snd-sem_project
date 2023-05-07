@@ -5,12 +5,12 @@ public abstract class Product {
    protected int stock;
    protected long code;
    protected float price;
-   protected float discount; // 0.16 == 16%
+   protected float discount;
    protected String description;
    protected LocalDate date;
-   protected Provider providerReference;
+   protected Provider provider; // reference
    
-   public Product(String n, int st, long c, float p, float di,String de, LocalDate da, Provider r){
+   public Product(String n, int st, long c, float p, float di,String de, LocalDate da, Provider pr){
       name = n;
       stock = st;
       code = c;
@@ -18,7 +18,7 @@ public abstract class Product {
       discount = di;
       description = de;
       date = da;
-      providerReference = r;
+      provider = pr;
    }
 
    public String getName(){
@@ -35,13 +35,6 @@ public abstract class Product {
 
    public void removeStock(){
       stock--;
-   }
-
-   public boolean isMinimumStock(){
-      if (stock<5){
-         return true;
-      }
-      return false;
    }
    
    public long getCode(){
@@ -64,8 +57,8 @@ public abstract class Product {
       return date;
    }
 
-   public Provider getProviderReference(){
-      return providerReference;
+   public Provider getProvider(){
+      return provider;
    }
    
    public void setName(String name){
@@ -92,8 +85,8 @@ public abstract class Product {
       this.date = date;
    }
 
-   public void setProviderReference(Provider reference){
-      providerReference = reference;
+   public void setProvider(Provider reference){
+      provider = reference;
    }
 
    public String toString(){
@@ -102,5 +95,10 @@ public abstract class Product {
       "\nDescription: "+description+"\nDate: "+date;
    }
 
-   public abstract Product getCopy();
+   // Product [Dove]:
+   // Code: 1234
+   // Price: 35 // $35
+   // Discount: 0.135 // = 13.5%
+   // Description: description...
+   // Date: 07/04/2023
 }

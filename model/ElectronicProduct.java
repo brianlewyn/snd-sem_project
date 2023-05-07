@@ -1,32 +1,22 @@
 import java.time.LocalDate;
 
 public class ElectronicProduct extends Product{
-    private long serial = 0;
+    private long serial;
 
-    public ElectronicProduct(String n, int st, long c, float p, float di, String de, LocalDate da, Provider r,  long se){
-        super(n, st, c, p, di, de, da, r);
+    public ElectronicProduct(String n, int st, long c, float p, float di, String de, LocalDate da, Provider pr,  long se){
+        super(n, st, c, p, di, de, da, pr);
         serial = se;
-    }
-
-    public ElectronicProduct getCopy(){
-        return new ElectronicProduct(name,1,code,price,discount,description,date,providerReference, serial);
     }
 
     public long getSerial(){
         return serial;
     }
 
-    public void setSerial(long s){
-        serial = s;
+    public void setSerial(long serial){
+        this.serial = serial;
     }
 
     public String toString(){
-        return name
-        +"\n\tProduct code: " +code 
-        +"\n\tSerial number: " +serial
-        +"\n\tProduct price: " +price
-        +"\n\tDiscount: " +discount
-        +"\n\tDescription: \n\t" +description
-        +"\n\tAdded in " +date;
+        return super.toString() +"\nSerial: "+serial;
     }
 }

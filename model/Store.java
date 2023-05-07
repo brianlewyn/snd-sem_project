@@ -16,10 +16,18 @@ public class Store{
     }
     
     public void setName(String name){
-        this.name=name;
+        this.name = name;
     }
     
     public void setAddress(String address){
-        this.address=address;
+        this.address = address;
     }
+
+    public String toString(){
+        return "STORE:\nName: "+name+"\nAddress: "+address;
+    }
+
+    // STORE: 
+    // Name:  SORIANA 
+    // Address: Av. Xalapa #53
 }
