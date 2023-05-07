@@ -90,12 +90,18 @@ public abstract class Product {
    }
 
    public String toString(){
-      return "Product ["+name+"]:\nCode: "+code+
-      "\nPrice: "+price+"\nDiscount: "+discount+
-      "\nDescription: "+description+"\nDate: "+date;
+      return "PRODUCT:"+
+      "\nName: "+name+
+      "\nCode: "+code+
+      "\nPrice: "+price+
+      "\nDiscount: "+discount+
+      "\nDescription: "+description+
+      "\nDate: "+date;
    }
 
-   // Product [Dove]:
+   // PRODUCT:
+   // Name: Dove
+   // Stock: 5
    // Code: 1234
    // Price: 35 // $35
    // Discount: 0.135 // = 13.5%

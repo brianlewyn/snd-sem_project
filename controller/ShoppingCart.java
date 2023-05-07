@@ -2,15 +2,9 @@ public class ShoppingCart{
 	private Product[] productArray = new Product[10];
    private int nProduct = 0;
 
-   public ShoppingCart(){}
-
 	public boolean isEmpty(){
 		return nProduct == 0;
 	}
-
-   public int getNumProduct(){ 
-      return nProduct; 
-   }
 
    public Product getProduct(int i){
       return productArray[i];
@@ -19,72 +13,52 @@ public class ShoppingCart{
 	// if returns true, then substracts one to the stock from the actual list 
     public boolean addProduct(Product reference){
 		if (nProduct < productArray.length){
-			
-			for (int i=0; i<nProduct; i++){
-				if (productArray[i] == reference){
-					reference.addStock();
-					return true;
-				}
-			}
-
-			if (reference instanceof NonElectronicProduct) {
-				NonElectronicProduct temp = (NonElectronicProduct)reference;
-				productArray[nProduct] = temp.getCopy();	
-			} else{
-				ElectronicProduct temp = (ElectronicProduct)reference;
-				productArray[nProduct] = temp.getCopy();
-			}
-			
-			nProduct++;
-			return true;
+         productArray[nProduct] = reference;
+         nProduct++;
+         return true;
 		}
-		
 		return false;
     }
 
 	 // if returns true, then adds one to the actual stock
     public boolean removeProduct(long code){
-		boolean flag = false;
-		
-		for (int i=0; i<nProduct-1; i++){
-			if (productArray[i].getCode() == code){
-				if (productArray[i].getNumStock() > 1){
-					productArray[i].removeStock();
-				} else {
-					productArray[i] = productArray[i+1];
-				}
-				flag = true;
-			}
-		}
+		int index = -1;
 
-		if (flag) {
-			productArray[nProduct] = null;
-			nProduct--;
-			return true;
-		}
-		
-		return false;
-    }
+        for (int i=0; i<nProduct; i++) {
+            if (productArray[i].getCode() == code){
+                index = i;
+                break;
+            } 
+        }
 
-    public void flush(){
-		for (int i=0; i<nProduct; i++) {
-			productArray[i].removeStock();
-		}
-		nProduct = 0;
+        if (index != -1) {
+            for(int j = index; j<nProduct-1; j++){
+                productArray[j] = productArray[j+1];
+            }
+            
+            productArray[nProduct-1] = null;
+            nProduct--;
+            return true;
+        }
+
+        return false;
     }
 
 	public String toString(){
-		String str = "Product List:";
-
 		if (nProduct == 0) {
-			return str +" null";
-		}
+         return null;
+     }
 
-		for (int i=0; i<nProduct; i++){
-			str += "\n"+productArray[i].getName()+
-			" ["+ productArray[i].getNumStock() +"]";
-		}
-		
-		return str;
+      String all = "";
+
+      for (int i=0; i<nProduct; i++){
+         all += "\n"+productArray[i].toString()+"\n";
+      }
+      
+      return all;
 	}
+
+	public int length(){ 
+      return nProduct; 
+   }
 }
