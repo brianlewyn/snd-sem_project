@@ -1,3 +1,7 @@
+package controller;
+
+import model.*;
+
 public class Clients implements NonModifier{
     private Client[] clientArray = new Client[10];
     private int nClient = 0;

@@ -1,3 +1,7 @@
+package controller;
+
+import model.*;
+
 public class ShoppingCart{
 	private Product[] productArray = new Product[10];
    private int nProduct = 0;

@@ -1,3 +1,7 @@
+package controller;
+
+import model.*;
+
 public class Products implements NonModifier{
     private Product[] productArray = new Product[10];
     private int nProduct;
@@ -105,5 +109,17 @@ public class Products implements NonModifier{
 
     public int length(){
         return nProduct;
+    }
+    
+    public boolean isElectronic(long code) {
+        Product product = modify(code);
+        
+        if (product != null) {
+            if (product instanceof ElectronicProduct){
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

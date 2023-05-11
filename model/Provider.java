@@ -1,3 +1,5 @@
+package model;
+
 public class Provider extends Person{
 	protected String phone;
 

@@ -1,3 +1,7 @@
+package controller;
+
+import model.*;
+
 public class Providers implements NonModifier{
    private Provider[] providerArray;
    private int nProvider;
