@@ -110,6 +110,32 @@ public class Products implements NonModifier{
     public int length(){
         return nProduct;
     }
+
+    public boolean isFull(){
+		return nProduct == productArray.length;
+	}
+
+    public boolean isMinimum(){
+        for (int i=0; i<nProduct; i++){
+            if(productArray[i].getNumStock() <=5){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String listProductMinimum(){
+        String list="";
+        
+        for (int i=0; i<nProduct; i++){
+            if(productArray[i].getNumStock() <=5){
+                productArray[i].setNumStock(10);
+                list += "Product: "+ productArray[i].getName()+"\n"; 
+            }
+        }
+        
+        return list;
+    }
     
     public boolean isElectronic(long code) {
         Product product = modify(code);

@@ -3,7 +3,7 @@ package controller;
 import model.*;
 
 public class Providers implements NonModifier{
-   private Provider[] providerArray;
+   private Provider[] providerArray = new Provider[10];
    private int nProvider;
 
    public boolean add(Provider p){
@@ -89,5 +89,9 @@ public class Providers implements NonModifier{
 
 	public int length(){
 		return nProvider;
+	}
+
+   public boolean isFull(){
+		return nProvider == providerArray.length;
 	}
 }

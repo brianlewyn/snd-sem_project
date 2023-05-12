@@ -27,7 +27,7 @@ public class Client extends Person{
    }
 
    public String toString(){
-      return "CLIENT"+super.toString()+"\nAddress: "+address+"\nRFC: "+rfc;
+      return "CLIENT\n"+super.toString()+"\nAddress: "+address+"\nRFC: "+rfc;
    }
 
    // CLIENT: 

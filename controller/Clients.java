@@ -91,4 +91,8 @@ public class Clients implements NonModifier{
 	public int length(){
 		return nClient;
 	}
+
+    public boolean isFull(){
+		return nClient == clientArray.length;
+	}
 }

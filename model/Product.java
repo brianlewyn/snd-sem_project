@@ -66,6 +66,10 @@ public abstract class Product {
    public void setName(String name){
       this.name = name;
    }
+
+   public void setNumStock(int num){
+      stock = num;
+   }
    
    public void setCode(long code){
       this.code = code;
@@ -94,11 +98,13 @@ public abstract class Product {
    public String toString(){
       return "PRODUCT:"+
       "\nName: "+name+
+      "\nStock: "+stock+
       "\nCode: "+code+
-      "\nPrice: "+price+
+      "\nPrice: $"+price+
       "\nDiscount: "+discount+
       "\nDescription: "+description+
-      "\nDate: "+date;
+      "\nDate: "+date+
+      "\nProvider: "+provider.name;
    }
 
    // PRODUCT:
