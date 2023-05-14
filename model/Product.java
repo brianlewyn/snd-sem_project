@@ -4,7 +4,8 @@ import java.time.LocalDate;
 
 public abstract class Product {
    protected String name;
-   protected int stock;
+   protected int stock = 0;
+   protected int stockCart = 0;
    protected long code;
    protected float price;
    protected float discount;
@@ -31,12 +32,16 @@ public abstract class Product {
       return stock;
    }
 
-   public void addStock(){
-      stock++;
+   public int getNumStockCart(){
+      return stockCart;
    }
 
-   public void removeStock(){
-      stock--;
+   public void addStockCart(int num){
+      stockCart += num;
+   }
+
+   public void removeStockCart(int num){
+      stockCart += num;
    }
    
    public long getCode(){
@@ -93,6 +98,20 @@ public abstract class Product {
 
    public void setProvider(Provider reference){
       provider = reference;
+   }
+
+   public void addFromStockToStockCart(int nItem){
+      stockCart += nItem;
+      stock -= nItem;
+   }
+
+   public void mixStockWithStockCart(){
+      stock += stockCart;
+      stockCart = 0;
+   }
+
+   public void resetStockCart(){
+      stockCart = 0;
    }
 
    public String toString(){

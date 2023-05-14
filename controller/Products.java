@@ -1,15 +1,34 @@
 package controller;
 
+import java.time.LocalDate;
+
 import model.*;
 
-public class Products implements NonModifier{
-    private Product[] productArray = new Product[10];
+public class Products implements ArrayController{
+    private Product[] productArray;
     private int nProduct;
 
+    public Products(){
+        productArray = new Product[10];
+    }
+
+    public Products(int size){
+        productArray = new Product[size];
+    }
+
     //Product is added
-    public boolean add(Product p){
+    public boolean addElectronicProduct(String n, int st, long c, float p, float di, String de, LocalDate da, Provider pr, long se){
         if(nProduct < productArray.length){
-            productArray[nProduct] = p; 
+            productArray[nProduct] = new ElectronicProduct(n, st, c, p, di, de, da, pr, se); 
+            nProduct++;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addNonElectronicProduct(String n, int st, long c, float p, float di, String de, LocalDate da, Provider pr){
+        if(nProduct < productArray.length){
+            productArray[nProduct] = new NonElectronicProduct(n, st, c, p, di, de, da, pr); 
             nProduct++;
             return true;
         }
@@ -25,6 +44,11 @@ public class Products implements NonModifier{
         }
         return null;
     }
+    
+    public ElectronicProduct modifyElectronic(long code){
+        return (ElectronicProduct)modify(code);
+    }
+    
 
     //A specific product is remove
     public boolean removeProduct(long code){
@@ -50,6 +74,20 @@ public class Products implements NonModifier{
         return false;
     }
 
+    public Product pullProduct(int index, int nItem) throws Exception{
+        if (!(0 <= index && index < nProduct)){
+            return null;
+        }
+
+        Product product = productArray[index];
+        if (!(0<nItem && nItem<=product.getNumStock())){
+            throw new Exception("Sorry, you cannot exceed our items stock. Please choose a fitting number.");
+        }
+        
+        product.addFromStockToStockCart(nItem);
+        return product;
+    }
+
     public String consult(long code){
         for (int i=0; i<nProduct; i++) {
             if (productArray[i].getCode() == code){
@@ -64,30 +102,28 @@ public class Products implements NonModifier{
             return null;
         }
 
-        String all = "";
-        
+        String list = "";
         for (int i=0; i<nProduct; i++){
-            all += "\n"+productArray[i].toString()+"\n";
+            list += "\n"+productArray[i].toString()+"\n";
         }
         
-        return all;
+        return list;
     }
 
-    public Object[] sortByAlphabet(){
-        Product[] clone = productArray.clone(); 
+    public String sortByAlphabet(){
         Product product;
 
         for (int i = 0; i < nProduct; i++) {
             for (int j = i + 1; j < nProduct; j++) {
-                if (clone[i].getName().compareTo(clone[j].getName()) > 0) {
-                    product = clone[i];
-                    clone[i] = clone[j];
-                    clone[j] = product;
+                if (productArray[i].getName().compareTo(productArray[j].getName()) > 0) {
+                    product = productArray[i];
+                    productArray[i] = productArray[j];
+                    productArray[j] = product;
                 }
             }
 		}
         
-        return clone;
+        return consultAll();
     }
 
     public Object[] sortByDate(){
@@ -146,6 +182,35 @@ public class Products implements NonModifier{
             }
         }
         
+        return false;
+    }
+
+    public boolean isEmpty(){
+        return nProduct == 0;
+    }
+
+    public String showList(){
+        String list ="";
+        
+        Product product;
+        for (int i=0; i<nProduct; i++){
+            product = productArray[i];
+            list += (i+1)+") "+product.getName()+ "  ["+product.getNumStock()+"]\n";
+        }
+        
+        return list;
+    }
+
+    public String type(){
+        return "product";
+    }
+
+    public boolean contains(long code){
+        for (int i=0; i<nProduct; i++){
+            if (productArray[i].getCode() == code){
+                return true;
+            }
+        }
         return false;
     }
 }

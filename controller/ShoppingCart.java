@@ -3,25 +3,40 @@ package controller;
 import model.*;
 
 public class ShoppingCart{
-	private Product[] productArray = new Product[10];
-   private int nProduct = 0;
+	private Product[] productArray;
+    private int nProduct = 0;
+
+    public ShoppingCart(){
+        productArray = new Product[10];
+    }
+
+    public ShoppingCart(int size){
+        productArray = new Product[size];
+    }
 
 	public boolean isEmpty(){
 		return nProduct == 0;
 	}
 
-   public Product getProduct(int i){
-      return productArray[i];
-   }
+    public Product getProduct(int i){
+        return productArray[i];
+    }
 
 	// if returns true, then substracts one to the stock from the actual list 
     public boolean addProduct(Product reference){
-		if (nProduct < productArray.length){
-         productArray[nProduct] = reference;
-         nProduct++;
-         return true;
+        for (int i=0; i<nProduct; i++){
+            if (productArray[i] == reference){
+                return true;
+            }
+        }
+		
+        if (nProduct < productArray.length){
+            productArray[nProduct] = reference;
+            nProduct++;
+            return true;
 		}
-		return false;
+		
+        return false;
     }
 
 	 // if returns true, then adds one to the actual stock
@@ -50,19 +65,30 @@ public class ShoppingCart{
 
 	public String toString(){
 		if (nProduct == 0) {
-         return null;
-     }
+            return null;
+        }
 
-      String all = "";
-
-      for (int i=0; i<nProduct; i++){
-         all += "\n"+productArray[i].toString()+"\n";
-      }
-      
-      return all;
+        String list = "";
+        for (int i=0; i<nProduct; i++){
+            list += "\n"+productArray[i].toString()+"\n";
+        }
+        
+        return list;
 	}
 
+    public String showList(){
+        String list ="";
+        
+        Product product;
+        for (int i=0; i<nProduct; i++){
+            product = productArray[i];
+            list += (i+1)+") "+product.getName()+ "  ["+product.getNumStockCart()+"]\n";
+        }
+        
+        return list;
+    }
+
 	public int length(){ 
-      return nProduct; 
-   }
+        return nProduct; 
+    }
 }

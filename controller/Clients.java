@@ -2,13 +2,21 @@ package controller;
 
 import model.*;
 
-public class Clients implements NonModifier{
-    private Client[] clientArray = new Client[10];
+public class Clients implements ArrayController, SubjectController{
+    private Client[] clientArray;
     private int nClient = 0;
 
-    public boolean add(Client c){
+    public Clients(){
+        clientArray = new Client[10];
+    }
+
+    public Clients(int size){
+        clientArray = new Client[size];
+    }
+
+    public boolean add(String name,String  email, String address, String rfc){
         if(nClient<clientArray.length){
-            clientArray[nClient] = c; 
+            clientArray[nClient] = new Client(name, email, address, rfc); 
             nClient++;
             return true;
         }
@@ -60,32 +68,32 @@ public class Clients implements NonModifier{
     }
 
     public String consultAll(){
-      if (nClient == 0) {
-         return null;
-     }
+        if (nClient == 0) {
+            return null;
+        }
 
-      String all = "";
-      for (int i=0; i<nClient; i++){
-         all += "\n"+clientArray[i].toString()+"\n";
-      }
+        String list = "";
+        for (int i=0; i<nClient; i++){
+            list += "\n"+clientArray[i].toString()+"\n";
+        }
       
-      return all;
+        return list;
     }
     
-    public Object[] sortByAlphabet(){
-       Client[] clone = clientArray.clone(); 
-       Client client;
+    public String sortByAlphabet(){
+        Client client;
 
         for (int i = 0; i < nClient; i++) {
             for (int j = i + 1; j < nClient; j++) {
-                if (clone[i].getName().compareTo(clone[j].getName()) > 0) {
-                    client = clone[i];
-                    clone[i] = clone[j];
-                    clone[j] = client;
+                if (clientArray[i].getName().compareTo(clientArray[j].getName()) > 0) {
+                    client = clientArray[i];
+                    clientArray[i] = clientArray[j];
+                    clientArray[j] = client;
                 }
             }
 		}
-        return clone;
+
+        return consultAll();
     }
 
 	public int length(){
@@ -95,4 +103,21 @@ public class Clients implements NonModifier{
     public boolean isFull(){
 		return nClient == clientArray.length;
 	}
+
+    public boolean isEmpty(){
+        return nClient == 0;
+    }
+
+    public String type(){
+        return "client";
+    }
+
+    public boolean contains(String name){
+        for (int i=0; i<nClient; i++){
+            if (clientArray[i].getName().equals(name)){
+            return true;
+            }
+        }
+        return false;
+    }
 }

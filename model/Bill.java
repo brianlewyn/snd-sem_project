@@ -3,7 +3,6 @@ package model;
 import java.time.LocalDate;
 
 public class Bill{
-	private static final float IVA = 0.16F;
 	private Client client; // reference
 	private Store store; // reference
 	private LocalDate date; 
