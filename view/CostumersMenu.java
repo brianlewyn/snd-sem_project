@@ -101,12 +101,13 @@ public class CostumersMenu{
 					System.out.println("\nProduct List:\n"+products.showList());
 					System.out.println("Shopping List:\n"+shoppingCart.showList());
 					
+					String info = shoppingCart.generateBill(store, clients.getClient(email));
+					System.out.println(info);
+					
 					for (int i=0; i<shoppingCart.length(); i++){
 						shoppingCart.getProduct(i).resetStockCart();
 					}
 					
-					String info = shoppingCart.generateBill(store, clients.getClient(email));
-					System.out.println(info);
 					Exit = true;
 				break;
 				case "E":

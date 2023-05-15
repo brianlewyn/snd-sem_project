@@ -1,7 +1,7 @@
 package model;
 
 public class Provider extends Person{
-	protected String phone;
+	private String phone;
 
 	public Provider(String n, String e, String p){
 		super(n, e);

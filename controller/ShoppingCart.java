@@ -1,9 +1,11 @@
 package controller;
 
+import java.util.Arrays;
+
 import model.*;
-import java.time.LocalDate;
 
 public class ShoppingCart{
+    private static final float IVA = 0.16F;
 	private Product[] productArray;
     private int nProduct = 0;
 
@@ -91,15 +93,61 @@ public class ShoppingCart{
 
     public String generateBill(Store s, Client c){
         Bill bill = new Bill(s, c);
-        String info = bill.toStringHeader()+"\n\n";
-        info += bill.toStringFooter();
+        String info = bill.toStringHeader()+"\n";
+
+        int[] pieces = new int[nProduct];
+		String[] names = new String[nProduct]; 
+		long[] codes = new long[nProduct];
+		float[] prices = new float[nProduct];
+		float[] discounts = new float[nProduct];
+		float[] totals = new float[nProduct];
+
+        for (int i=0; i<nProduct; i++) {
+            Product product = productArray[i];
+
+            pieces[i] = product.getNumStockCart();
+            names[i] = product.getName();
+            codes[i] = product.getCode();
+            prices[i] = product.getPrice();
+            discounts[i] = product.getDiscount();
+
+            if (product.getDiscount() != 0) {
+                float price = product.getPrice() * product.getNumStockCart();
+                price -= price * product.getDiscount(); // discount= 2.00
+                totals[i] = price;
+            } else {
+                totals[i] =  product.getPrice() * product.getNumStockCart();
+            }
+        }
+
+        // String.for
+		info += "\nCantidad"+Arrays.toString(pieces);
+		info += "\nProducto"+Arrays.toString(names);
+		info += "\nCodigo"+Arrays.toString(codes);
+		info += "\nPrecioUni"+Arrays.toString(prices);
+		info += "\nDescuentoUni"+Arrays.toString(discounts);
+
+		float subTotal = calculateSubTotal(prices, pieces);
+		info += "\n\nSubTotal: $"+subTotal;
+		
+		float iva = subTotal*IVA;
+		info += "\nIVA: $"+iva;
+		info += "\nTotal $"+(subTotal+iva);
+
+
+        info += "\n\n"+bill.toStringFooter();
         return info;
     }
 
 	public int length(){ 
         return nProduct; 
     }
-
      
-
+    private float calculateSubTotal(float[] prices, int[] pieces){
+		float total = 0;
+		for (int i=0; i<prices.length; i++){
+			total += prices[i]*pieces[i];
+		}
+		return total;
+	}
 }

@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 public class StoreMenu {
     // controller
-    Clients clients;
-    Products products; 
-    Providers providers;
+    private Clients clients;
+    private Products products; 
+    private Providers providers;
     
     // others
-    LocalDate date = LocalDate.now();
-    Scanner sc = new Scanner(System.in);
+    private LocalDate date = LocalDate.now();
+    private Scanner sc = new Scanner(System.in);
 
     public StoreMenu(){}
 

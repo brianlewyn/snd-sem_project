@@ -15,13 +15,13 @@ public class Providers implements ArrayController, SubjectController{
    }
 
    public boolean add(String name, String email, String phone){
-      if (nProvider < providerArray.length){
-         providerArray[nProvider] = new Provider(name, email, phone);
-         nProvider++;
-         return true;
-      }
-      return false;
-   }
+        if (nProvider < providerArray.length){
+            providerArray[nProvider] = new Provider(name, email, phone);
+            nProvider++;
+            return true;
+        }
+        return false;
+    }
 
     public Provider modify(String name){
         for (int i=0; i<nProvider; i++){

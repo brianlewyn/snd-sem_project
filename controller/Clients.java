@@ -14,7 +14,7 @@ public class Clients implements ArrayController, SubjectController{
         clientArray = new Client[size];
     }
 
-    public boolean add(String name,String  email, String address, String rfc){
+    public boolean add(String name,String email, String address, String rfc){
         if(nClient<clientArray.length){
             clientArray[nClient] = new Client(name, email, address, rfc); 
             nClient++;
@@ -30,7 +30,7 @@ public class Clients implements ArrayController, SubjectController{
             if (clientArray[i].getName().equals(name)){
                return clientArray[i];
             }
-         }
+        }
         return null;
     }
 
@@ -39,7 +39,7 @@ public class Clients implements ArrayController, SubjectController{
             if (clientArray[i].getEmail().equals(email)){
                return clientArray[i];
             }
-         }
+        }
         return null;
     }
 
@@ -47,33 +47,33 @@ public class Clients implements ArrayController, SubjectController{
     public boolean remove(String name){
         int index = -1;
 
-      for (int i=0; i<nClient; i++) {
-         if (clientArray[i].getName().equals(name)){
-               index = i;
-               break;
-         } 
-      }
+        for (int i=0; i<nClient; i++) {
+            if (clientArray[i].getName().equals(name)){
+                index = i;
+                break;
+            } 
+        }
 
-      if (index != -1) {
-         for(int j = index; j<nClient-1; j++){
-               clientArray[j] = clientArray[j+1];
-         }
-         
-         clientArray[nClient-1] = null;
-         nClient--;
-         return true;
-      }
+        if (index != -1) {
+            for(int j = index; j<nClient-1; j++){
+                clientArray[j] = clientArray[j+1];
+            }
+            
+            clientArray[nClient-1] = null;
+            nClient--;
+            return true;
+        }
 
-      return false;
+        return false;
     }
 
     public String consult(String name){
-      for (int i=0; i<nClient; i++) {
-         if (clientArray[i].getName().equals(name)){
-             return clientArray[i].toString();
-         }
-      }
-      return null;
+        for (int i=0; i<nClient; i++) {
+            if (clientArray[i].getName().equals(name)){
+                return clientArray[i].toString();
+            }
+        }
+        return null;
     }
 
     public String consultAll(){

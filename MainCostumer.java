@@ -30,3 +30,36 @@ public class MainCostumer {
         view.displayCustomersMenu();
     }
 }
+
+// Motorola[5]: 25,000
+// Mabe[2]: 10,000
+// Papitas[3]: 78
+// SubTotal: 35,078
+// Total: $40,690.48
+
+/*
+ * BILL
+Date: 2023-05-14
+
+STORE:
+Name: UV JDK
+Address: Av.Xalpa
+
+CLIENT
+Name: Yael
+Email: yael@gmail.com
+Address: Av. Xalapa
+RFC: A12DF345H7
+
+Cantidad[5, 2, 3]
+Producto[Motorola, Mabe, Papitas]
+Codigo[55555, 50596, 33333]
+PrecioUni[5000.0, 5000.0, 26.0]
+DescuentoUni[0.0, 0.0, 0.0]
+
+SubTotal: $35078.0
+IVA: $5612.48
+Total $40690.48
+
+Thank you for your trust, have a good one! <3
+ */

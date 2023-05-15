@@ -126,21 +126,20 @@ public class Products implements ArrayController{
         return consultAll();
     }
 
-    public Object[] sortByDate(){
-        Product[] clone = productArray.clone();
+    public String sortByDate(){
         Product product;
 
         for (int i = 0; i < nProduct; i++) {
             for (int j = i + 1; j < nProduct; j++) {
-                if (clone[i].getDate().isBefore(clone[j].getDate())) {
-                    product = clone[i];
-                    clone[i] = clone[j];
-                    clone[j] = product;
+                if (productArray[i].getDate().isBefore(productArray[j].getDate())) {
+                    product = productArray[i];
+                    productArray[i] = productArray[j];
+                    productArray[j] = product;
                 }
             }
 		}
         
-        return clone;
+        return consultAll();
     }
 
     public int length(){
