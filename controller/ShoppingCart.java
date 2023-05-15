@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import java.time.LocalDate;
 
 public class ShoppingCart{
 	private Product[] productArray;
@@ -88,7 +89,17 @@ public class ShoppingCart{
         return list;
     }
 
+    public String generateBill(Store s, Client c){
+        Bill bill = new Bill(s, c);
+        String info = bill.toStringHeader()+"\n\n";
+        info += bill.toStringFooter();
+        return info;
+    }
+
 	public int length(){ 
         return nProduct; 
     }
+
+     
+
 }

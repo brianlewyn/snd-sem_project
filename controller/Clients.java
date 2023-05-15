@@ -34,6 +34,15 @@ public class Clients implements ArrayController, SubjectController{
         return null;
     }
 
+    public Client getClient(String email){
+        for (int i=0; i<nClient; i++){
+            if (clientArray[i].getEmail().equals(email)){
+               return clientArray[i];
+            }
+         }
+        return null;
+    }
+
     // i changed the "i" parameter to j,to avoid any confusions 
     public boolean remove(String name){
         int index = -1;

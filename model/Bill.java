@@ -5,18 +5,17 @@ import java.time.LocalDate;
 public class Bill{
 	private Client client; // reference
 	private Store store; // reference
-	private LocalDate date; 
+	private LocalDate date = LocalDate.now(); 
 
-   public Bill(Client c, Store s, LocalDate da){
-      client = c;
-      store = s;
-      date = da;
-   }
+	public Bill(Store s, Client c){
+		store = s;
+		client = c;
+	}
 
 	public String toStringHeader() {
 		String bill = "";
 		bill = "BILL\nDate: "+date.toString()+"\n\n";
-		bill += store.toString();
+		bill += store.toString()+"\n\n";
 		bill += client.toString();
 		return bill;
 	}

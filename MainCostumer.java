@@ -1,7 +1,7 @@
 
 import java.time.LocalDate;
 
-import model.Provider;
+import model.*;
 import controller.*;
 import view.*;
 
@@ -10,7 +10,7 @@ public class MainCostumer {
         Clients clients = new Clients(10);
         Products products = new Products(10);
         Providers providers =  new Providers(10);
-
+        
         providers.add("Dylan", "dylan@gmail.com", "22813468");
         Provider Dylan = providers.modify("Dylan");
         LocalDate date = LocalDate.now();
@@ -23,8 +23,10 @@ public class MainCostumer {
         products.addElectronicProduct("Apple", 8, 4444, 10000, 0, "", date, Dylan, 123456);
         products.addNonElectronicProduct("Papitas", 6, 33333, 26, 0, "", date, Dylan);
 
+        clients.add("Yael", "yael@gmail.com", "Av. Xalapa", "A12DF345H7");
+
         CostumersMenu view = new CostumersMenu();
-        view.addControllers(clients, products);
+        view.addControllers(clients, products, new Store("UV JDK", "Av.Xalpa"));
         view.displayCustomersMenu();
     }
 }
