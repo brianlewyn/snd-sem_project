@@ -1,8 +1,9 @@
 package model;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 
-public abstract class Product {
+public abstract class Product implements Serializable {
    protected String name;
    protected int stock = 0;
    protected int stockCart = 0;
@@ -12,8 +13,8 @@ public abstract class Product {
    protected String description;
    protected LocalDate date;
    protected Provider provider; // reference
-   
-   public Product(String n, int st, long c, float p, float di,String de, LocalDate da, Provider pr){
+
+   public Product(String n, int st, long c, float p, float di, String de, LocalDate da, Provider pr) {
       name = n;
       stock = st;
       code = c;
@@ -24,106 +25,106 @@ public abstract class Product {
       provider = pr;
    }
 
-   public String getName(){
+   public String getName() {
       return name;
    }
 
-   public int getNumStock(){
+   public int getNumStock() {
       return stock;
    }
 
-   public int getNumStockCart(){
+   public int getNumStockCart() {
       return stockCart;
    }
 
-   public void addStockCart(int num){
+   public void addStockCart(int num) {
       stockCart += num;
    }
 
-   public void removeStockCart(int num){
+   public void removeStockCart(int num) {
       stockCart += num;
    }
-   
-   public long getCode(){
+
+   public long getCode() {
       return code;
    }
 
-   public float getPrice(){
+   public float getPrice() {
       return price;
    }
 
-   public float getDiscount(){
+   public float getDiscount() {
       return discount;
    }
 
-   public String getDescription(){
+   public String getDescription() {
       return description;
    }
 
-   public LocalDate getDate(){
+   public LocalDate getDate() {
       return date;
    }
 
-   public Provider getProvider(){
+   public Provider getProvider() {
       return provider;
    }
-   
-   public void setName(String name){
+
+   public void setName(String name) {
       this.name = name;
    }
 
-   public void setNumStock(int num){
+   public void setNumStock(int num) {
       stock = num;
    }
-   
-   public void setCode(long code){
+
+   public void setCode(long code) {
       this.code = code;
    }
 
-   public void setPrice(float price){
+   public void setPrice(float price) {
       this.price = price;
    }
 
-   public void setDiscount(float discount){
+   public void setDiscount(float discount) {
       this.discount = discount;
    }
 
-   public void setDescription(String description){
+   public void setDescription(String description) {
       this.description = description;
    }
 
-   public void setDate(LocalDate date){
+   public void setDate(LocalDate date) {
       this.date = date;
    }
 
-   public void setProvider(Provider reference){
+   public void setProvider(Provider reference) {
       provider = reference;
    }
 
-   public void addFromStockToStockCart(int nItem){
+   public void addFromStockToStockCart(int nItem) {
       stockCart += nItem;
       stock -= nItem;
    }
 
-   public void mixStockWithStockCart(){
+   public void mixStockWithStockCart() {
       stock += stockCart;
       stockCart = 0;
    }
 
-   public void resetStockCart(){
+   public void resetStockCart() {
       stockCart = 0;
    }
 
-   public String toString(){
-      return "PRODUCT:"+
-      "\nName: "+name+
-      "\nStock: "+stock+
-      "\nCode: "+code+
-      "\nPrice: $"+price+
-      "\nDiscount: "+discount+
-      "\nDescription: "+description+
-      "\nDate: "+date+
-      "\nProvider: "+provider.name;
+   public String toString() {
+      return "PRODUCT:" +
+            "\nName: " + name +
+            "\nStock: " + stock +
+            "\nCode: " + code +
+            "\nPrice: $" + price +
+            "\nDiscount: " + discount +
+            "\nDescription: " + description +
+            "\nDate: " + date +
+            "\nProvider: " + provider.name;
    }
 
    // PRODUCT:
