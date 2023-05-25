@@ -4,6 +4,7 @@ import controller.*;
 
 import java.time.LocalDate;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class StoreMenu {
@@ -237,10 +238,32 @@ public class StoreMenu {
     }
 
     private void modifyClient() {
-        boolean Exit = false;
+        boolean Exit = false, nonOption = true;
         String name;
 
         do {
+
+            do {
+                try {
+                    switch (read("\nDo you want to modify a client's information? write down yes or no: ")) {
+                        case "yes", "Yes", "YES":
+                            nonOption = false;
+                            break;
+                        case "no", "No", "NO":
+                            return;
+                        default:
+                            System.out.println("Choose \"Yes\" or \"No\"");
+                    }
+                } catch (NoSuchElementException e1) {
+                    System.out.println("An error has ocurred");
+                } catch (IllegalStateException e2) {
+                    System.out.println("An error has ocurred");
+                } catch (Exception e) {
+                    System.out.println("An error has ocurred");
+                }
+
+            } while (nonOption);
+
             try {
                 System.out.println("\nWrite down the name of the client that you would like to modify: ");
                 name = sc.nextLine();
@@ -352,14 +375,32 @@ public class StoreMenu {
     }
 
     private void modifyProvider() {
-        boolean Exit = false;
-        String name;
+        boolean Exit = false, nonOption = true;
+        String name = "";
 
         do {
-            try {
-                System.out.println("\nWrite down the name of the provider that you would like to modify: ");
-                name = sc.nextLine();
+            do {
+                try {
+                    switch (read("\nDo you want to modify a provider's information? Write down Yes or No: ")) {
+                        case "yes", "Yes", "YES":
+                            nonOption = false;
+                            break;
+                        case "no", "No", "NO":
+                            return;
+                        default:
+                            System.out.println("Choose \"Yes\" or \"No\"");
+                    }
+                } catch (NoSuchElementException e1) {
+                    System.out.println("An error has ocurred");
+                } catch (IllegalStateException e2) {
+                    System.out.println("An error has ocurred");
+                } catch (Exception e) {
+                    System.out.println("An error has ocurred");
+                }
 
+            } while (nonOption);
+
+            try {
                 contains(providers, name);
                 System.out.println("\nWhat would you like to modify?" +
                         "\n1) Name \n2) Email \n3) Phone \n4) Exit\n");
@@ -529,11 +570,31 @@ public class StoreMenu {
     }
 
     private void modifyProduct() {
-        boolean Exit = false, isElectronic = false;
+        boolean Exit = false, isElectronic = false, nonOption = true;
         long code;
         int option;
 
         do {
+            do {
+                try {
+                    switch (read("\nDo you want to modify a product's information? write down yes or no: ")) {
+                        case "yes", "Yes", "YES":
+                            nonOption = false;
+                            break;
+                        case "no", "No", "NO":
+                            return;
+                        default:
+                            System.out.println("Choose \"Yes\" or \"No\"");
+                    }
+                } catch (NoSuchElementException e1) {
+                    System.out.println("An error has ocurred");
+                } catch (IllegalStateException e2) {
+                    System.out.println("An error has ocurred");
+                } catch (Exception e) {
+                    System.out.println("An error has ocurred");
+                }
+            } while (nonOption);
+
             try {
                 code = readLong("\nWrite down the code of the product that you would like to modify:");
 
