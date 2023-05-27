@@ -17,7 +17,6 @@ import controller.Providers;
 
 public class ElectronicProductGraphic extends JFrame {
     JTextField tfName, tfStock, tfCode, tfPrice, tfDiscount, tfDescription, tfDate, tfProvider, tfSerial;
-    // JLabel lTitle, lName, lStock, lCode, lPrice, lDiscount, lDescription, lDate;
     JButton bSave, bCancel;
     Products products;
     Providers providers;
@@ -28,16 +27,18 @@ public class ElectronicProductGraphic extends JFrame {
         this.products = products;
         this.providers = providers;
 
+        setLayout(new BorderLayout());
         add(titlepProduct());
-        add(fields(), BorderLayout.SOUTH);
+        add(fields(), BorderLayout.CENTER);
         add(BooleanButtons(), BorderLayout.SOUTH);
 
         bCancel.addActionListener(new CancelListener());
-        // bSave.addActionListener(new );
+        bSave.addActionListener(new SaveListener());
+
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
-    // Name, stock, code, price, Discount, Description, date
 
     private Label titlepProduct() {
         return new Label("Upload Product");
@@ -46,19 +47,19 @@ public class ElectronicProductGraphic extends JFrame {
     private JPanel fields() {
         JPanel p = new JPanel(new BorderLayout());
 
-        JPanel south = new JPanel(new FlowLayout());
-        tfName = addField(south, "Name", 10);
-        tfStock = addField(south, "Stock", 2);
-        tfCode = addField(south, "Code", 10);
-        tfPrice = addField(south, "Price", 10);
+        JPanel north = new JPanel(new FlowLayout());
+        tfName = addField(north, "Name", 10);
+        tfStock = addField(north, "Stock", 2);
+        tfCode = addField(north, "Code", 10);
+        tfPrice = addField(north, "Price", 10);
 
         JPanel center = new JPanel(new FlowLayout());
-        tfDiscount = addField(center, "Code", 10);
-        tfDescription = addField(center, "Price", 10);
-        tfDate = addField(center, "Date", 10);
+        tfDiscount = addField(center, "Discount", 10);
+        tfDescription = addField(center, "Description", 50);
+        tfProvider = addField(center, "Provider", 10);
         tfSerial = addField(center, "Serial", 10);
 
-        p.add(south, BorderLayout.SOUTH);
+        p.add(north, BorderLayout.NORTH);
         p.add(center, BorderLayout.CENTER);
 
         return p;
@@ -66,13 +67,13 @@ public class ElectronicProductGraphic extends JFrame {
     }
 
     private JPanel BooleanButtons() {
-
         JPanel p = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
+        bCancel = new JButton("Cancel");
+        p.add(bCancel);
 
         bSave = new JButton("Save");
         p.add(bSave);
-        bCancel = new JButton("Cancel");
-        p.add(bCancel);
 
         return p;
 
@@ -95,7 +96,6 @@ public class ElectronicProductGraphic extends JFrame {
             tfDiscount.setText(null);
             tfProvider.setText(null);
             tfDescription.setText(null);
-            tfDate.setText(null);
             tfSerial.setText(null);
         }
     }
@@ -114,6 +114,7 @@ public class ElectronicProductGraphic extends JFrame {
             if (providers.modify(provider) != null) {
                 products.addElectronicProduct(name, stock, code, price, discount, description, LocalDate.now(),
                         providers.modify(provider), serial);
+                showMessage("Product upload");
             } else {
                 showMessage("Provider not found");
             }
@@ -129,7 +130,6 @@ public class ElectronicProductGraphic extends JFrame {
         temp.pack();
 
         temp.setLocationRelativeTo(null);
-        temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         temp.setVisible(true);
     }
 }

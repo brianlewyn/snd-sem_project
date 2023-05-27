@@ -16,24 +16,24 @@ import controller.Clients;
 
 public class ClientsGraphic extends JFrame {
     private JTextField fName, fEmail, fAddr, fRfc;
-    private JButton bSave, bCancel;
+    private JButton bCancel, bSave;
     private Clients clients;
 
     public ClientsGraphic(Clients clients) {
         super("Client");
 
+        this.clients = clients;
         setLayout(new BorderLayout());
         add(title(), BorderLayout.NORTH);
         add(fields(), BorderLayout.CENTER);
         add(buttons(), BorderLayout.SOUTH);
 
-        bSave.addActionListener(new ListenerSave());
         bCancel.addActionListener(new ListenerCancel());
+        bSave.addActionListener(new ListenerSave());
 
         pack();
 
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
@@ -68,28 +68,28 @@ public class ClientsGraphic extends JFrame {
     private JPanel fields() {
         JPanel b = new JPanel(new BorderLayout());
 
-        JPanel south = new JPanel(new FlowLayout());
-        fName = addField(south, "Name", 10);
-        fEmail = addField(south, "Email", 15);
+        JPanel north = new JPanel(new FlowLayout());
+        fName = addField(north, "Name", 10);
+        fEmail = addField(north, "Email", 15);
 
         JPanel center = new JPanel(new FlowLayout());
         fAddr = addField(center, "Address", 20);
         fRfc = addField(center, "RFC", 14);
 
-        b.add(south, BorderLayout.SOUTH);
+        b.add(north, BorderLayout.NORTH);
         b.add(center, BorderLayout.CENTER);
 
         return b;
     }
 
     private JPanel buttons() {
-        JPanel p = new JPanel(new FlowLayout());
-
-        bSave = new JButton("Save");
-        p.add(bSave);
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         bCancel = new JButton("Cancel");
         p.add(bCancel);
+
+        bSave = new JButton("Save");
+        p.add(bSave);
 
         return p;
     }
@@ -110,7 +110,6 @@ public class ClientsGraphic extends JFrame {
         temp.pack();
 
         temp.setLocationRelativeTo(null);
-        temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         temp.setVisible(true);
     }
 

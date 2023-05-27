@@ -111,7 +111,8 @@ public class StoreMenu {
 
                 switch (option) {
                     case 1:
-                        addClient();
+                        // addClient();
+                        ClientsGraphic g = new ClientsGraphic(clients);
                         break;
                     case 2:
                         remove(clients);
@@ -330,7 +331,8 @@ public class StoreMenu {
 
                 switch (option) {
                     case 1:
-                        addProvider();
+                        // addProvider();
+                        ProvidersGraphic g = new ProvidersGraphic(providers);
                         break;
                     case 2:
                         remove(providers);
@@ -509,10 +511,12 @@ public class StoreMenu {
             try {
                 switch (readOption()) {
                     case 1:
-                        addElectronicProduct();
+                        // addElectronicProduct();
+                        ElectronicProductGraphic g = new ElectronicProductGraphic(products, providers);
                         break;
                     case 2:
-                        addNonElectronicProduct();
+                        // addNonElectronicProduct();
+                        NonElectronicProductGraphic h = new NonElectronicProductGraphic(products, providers);
                         break;
                     case 3:
                         Exit = true;

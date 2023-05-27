@@ -14,18 +14,19 @@ import java.awt.event.ActionListener;
 
 import controller.Providers;
 
-public class ProvidersGraphic {
+public class ProvidersGraphic extends JFrame {
 
-    JButton cancelButton;
-    JButton saveButton;
+    private JButton cancelButton;
+    private JButton saveButton;
 
-    JTextField tName;
-    JTextField tEmail;
-    JTextField tPhone;
+    private JTextField tName;
+    private JTextField tEmail;
+    private JTextField tPhone;
 
     Providers providers;
 
     public ProvidersGraphic(Providers providers) {
+        super("Provider's Window");
 
         this.providers = providers;
 
@@ -41,15 +42,18 @@ public class ProvidersGraphic {
         tEmail = new JTextField("", 20);
         tPhone = new JTextField("", 20);
 
-        JFrame frame = new JFrame("Provider's Window");
-        frame.setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
 
-        frame.add(BooleanButtons(cancelButton, saveButton), BorderLayout.SOUTH);
-        frame.add(createProvidersPanel(lName, lEmail, lPhoneNumber, tName, tEmail, tPhone), BorderLayout.CENTER);
-        frame.add(new JLabel("Upload the provider information"), BorderLayout.NORTH);
+        add(BooleanButtons(cancelButton, saveButton), BorderLayout.SOUTH);
+        add(createProvidersPanel(lName, lEmail, lPhoneNumber, tName, tEmail, tPhone), BorderLayout.CENTER);
+        add(new JLabel("Upload the provider information"), BorderLayout.NORTH);
 
-        frame.pack();
-        frame.setVisible(true);
+        cancelButton.addActionListener(new CancelListener());
+        saveButton.addActionListener(new SaveListener());
+
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     private JPanel createProvidersPanel(JLabel lName, JLabel lEmail, JLabel lPhoneNumber,
@@ -91,16 +95,7 @@ public class ProvidersGraphic {
 
     class SaveListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
-            String name = tName.getText();
-            String email = tEmail.getText();
-            String phone = tPhone.getText();
-
-            providers.add(name, email, phone);
-
-            tName.setText(null);
-            tEmail.setText(null);
-            tPhone.setText(null);
+            providers.add(tName.getText(), tEmail.getText(), tPhone.getText());
 
         }
     }
