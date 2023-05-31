@@ -25,7 +25,7 @@ public class MainStore {
 
     public static Client[] loadData(Client[] clients) {
         try {
-            FileInputStream fisClients = new FileInputStream("./Files/clients.obj");
+            FileInputStream fisClients = new FileInputStream("./data/clients.obj");
             ObjectInputStream oisClients = new ObjectInputStream(fisClients);
             clients = (Client[]) oisClients.readObject();
             oisClients.close();
@@ -41,7 +41,7 @@ public class MainStore {
 
     public static Product[] loadData(Product[] products) {
         try {
-            FileInputStream fisProducts = new FileInputStream("./Files/products.obj");
+            FileInputStream fisProducts = new FileInputStream("./data/products.obj");
             ObjectInputStream oisProducts = new ObjectInputStream(fisProducts);
             products = (Product[]) oisProducts.readObject();
             oisProducts.close();
@@ -57,7 +57,7 @@ public class MainStore {
 
     public static Provider[] loadData(Provider[] providers) {
         try {
-            FileInputStream fisProviders = new FileInputStream("./Files/providers.obj");
+            FileInputStream fisProviders = new FileInputStream("./data/providers.obj");
             ObjectInputStream oisProviders = new ObjectInputStream(fisProviders);
             providers = (Provider[]) oisProviders.readObject();
             oisProviders.close();
@@ -73,9 +73,9 @@ public class MainStore {
 
     public static void saveData(Client[] clients, Product[] products, Provider[] providers) {
         try {
-            FileOutputStream fosClients = new FileOutputStream("./Files/clients.obj");
-            FileOutputStream fosProducts = new FileOutputStream("./Files/products.obj");
-            FileOutputStream fosProviders = new FileOutputStream("./Files/providers.obj");
+            FileOutputStream fosClients = new FileOutputStream("./data/clients.obj");
+            FileOutputStream fosProducts = new FileOutputStream("./data/products.obj");
+            FileOutputStream fosProviders = new FileOutputStream("./data/providers.obj");
 
             ObjectOutputStream oosClients = new ObjectOutputStream(fosClients);
             ObjectOutputStream oosProducts = new ObjectOutputStream(fosProducts);
