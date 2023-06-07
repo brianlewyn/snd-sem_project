@@ -247,10 +247,10 @@ public class StoreMenu {
             do {
                 try {
                     switch (read("\nDo you want to modify a client's information? write down yes or no: ")) {
-                        case "yes", "Yes", "YES":
+                        case "Yes":
                             nonOption = false;
                             break;
-                        case "no", "No", "NO":
+                        case "No":
                             return;
                         default:
                             System.out.println("Choose \"Yes\" or \"No\"");
@@ -384,10 +384,10 @@ public class StoreMenu {
             do {
                 try {
                     switch (read("\nDo you want to modify a provider's information? Write down Yes or No: ")) {
-                        case "yes", "Yes", "YES":
+                        case "Yes":
                             nonOption = false;
                             break;
-                        case "no", "No", "NO":
+                        case "No":
                             return;
                         default:
                             System.out.println("Choose \"Yes\" or \"No\"");
@@ -582,10 +582,10 @@ public class StoreMenu {
             do {
                 try {
                     switch (read("\nDo you want to modify a product's information? write down yes or no: ")) {
-                        case "yes", "Yes", "YES":
+                        case "Yes":
                             nonOption = false;
                             break;
-                        case "no", "No", "NO":
+                        case "No":
                             return;
                         default:
                             System.out.println("Choose \"Yes\" or \"No\"");
